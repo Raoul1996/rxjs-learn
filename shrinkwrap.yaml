@@ -1,5 +1,6 @@
 dependencies:
   rxjs: 6.3.1
+  rxjs-compat: 6.3.1
   ts-loader: 4.5.0
   typescript: 3.0.3
   webpack: 4.17.1
@@ -2790,6 +2791,10 @@ packages:
     dev: false
     resolution:
       integrity: sha1-6Eg5bwV9Ij8kOGkkYY4laUFh7Ec=
+  /rxjs-compat/6.3.1:
+    dev: false
+    resolution:
+      integrity: sha512-WK5N7xfx4sbOUAg5r47DUQdjZKvxb5dfRFId6QHbSlA6uQs22N7vlVvodnItotz2dDWgLLqhzO9ByyZofQ2MZg==
   /rxjs/6.3.1:
     dependencies:
       tslib: 1.9.3
@@ -3655,6 +3660,7 @@ shrinkwrapMinorVersion: 8
 shrinkwrapVersion: 3
 specifiers:
   rxjs: ^6.3.1
+  rxjs-compat: ^6.3.1
   ts-loader: ^4.5.0
   typescript: ^3.0.3
   webpack: ^4.17.1

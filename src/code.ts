@@ -1,22 +1,14 @@
-import {Observable, Subject, ReplaySubject, from, of, range} from 'rxjs'
-import {map, filter, switchMap} from 'rxjs/operators'
+import {fromEvent} from 'rxjs'
+import {throttle, scan, map} from 'rxjs/operators'
+import {interval} from 'rxjs'
 
-range(1, 200)
-    .pipe(filter(x => x % 2 === 1), map(x => x + x))
-    .subscribe(x => console.log(x));
-
-const observable = Observable.create((observer: any) => {
-    observer.next('Hey guys!');
-    observer.next('How are you?');
-    observer.complete();
-    observer.next('This will not send.')
-
-});
-observable.subscribe((x: any) => addItem(x))
-
-function addItem(val: any) {
-    const node = document.createElement("li");
-    const textNode = document.createTextNode(val);
-    node.appendChild(textNode);
-    document.getElementById('output').appendChild(node);
-}
+const button = document.createElement('button');
+button.appendChild(document.createTextNode('button'));
+document.querySelector('#output').appendChild(button);
+fromEvent(button, 'click')
+    .pipe(
+        throttle((e: any) => interval(1000)),
+        map((e: any) => e.clientX),
+        scan((count: number, clientX: number) => count + clientX, 0)
+    )
+    .subscribe((count) => console.log(`${count}`));
